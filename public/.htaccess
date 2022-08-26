@@ -1,0 +1,10 @@
+# Instrucciones al servidor Apache para indicarle como tratar al archivo index y las peticiones
+# Todas las peticiones http pasarán solamente por el archivo index
+<IfModule mod_rewrite.c>
+    Options -Multiviews
+    RewriteEngine On
+    RewriteBase /proyecto-terminal/public
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
