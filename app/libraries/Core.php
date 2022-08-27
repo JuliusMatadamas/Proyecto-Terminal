@@ -31,7 +31,7 @@ class Core
         }
 
         // Se requiere el controlador
-        require_once '../app/controllers/' . $this->currentController . '.php';
+        require_once 'app/controllers/' . $this->currentController . '.php';
 
         // Se instancia el controlador
         $this->currentController = new $this->currentController;

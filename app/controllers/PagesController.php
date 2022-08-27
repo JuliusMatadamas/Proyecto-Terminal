@@ -1,7 +1,7 @@
 <?php
 
 
-class PagesController
+class PagesController extends Controller
 {
     public function __construct()
     {
@@ -9,6 +9,9 @@ class PagesController
 
     public function index()
     {
-        echo "Hi desde el index de PagesController";
+        $data = [
+            'title' => 'Título de la página'
+        ];
+        $this->view('pages/index', $data);
     }
 }
