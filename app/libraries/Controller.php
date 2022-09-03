@@ -6,7 +6,7 @@ class Controller
     // Cargar el modelo
     public function model($model)
     {
-        require_once '../app/models/' . $model . '.php';
+        require_once './app/models/' . ucfirst(strtolower($model)) . '.php';
 
         return new $model();
     }
@@ -20,7 +20,7 @@ class Controller
         }
         else
         {
-            die('The view does not exist.');
+            die('La vista no existe.');
         }
     }
 }

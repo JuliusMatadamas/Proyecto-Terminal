@@ -9,7 +9,8 @@ class Core
 
     public function __construct()
     {
-        $url = $this->getUrl (); // llamar al método getUrl para obtener la url
+        $url = $this->getUri (); // llamar al método getUri para obtener la uri
+
 
         /**
          * Si existe la url, se comprueba si el elemento de la posición 0 corresponde a un controlador
@@ -62,14 +63,15 @@ class Core
         call_user_func_array ([$this->currentController, $this->currentMethod], $this->params);
     }
 
-    public function getUrl()
+    public function getUri()
     {
-        if (isset($_GET['url']))
+        $uri = '';
+        if (isset($_GET['uri']))
         {
-            $url = rtrim($_GET['url'], '/'); // Eliminar la última barra en caso de haberla
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);
-            return $url;
+            $uri = rtrim($_GET['uri'], '/'); // Eliminar la última barra en caso de haberla
+            $uri = filter_var($uri, FILTER_SANITIZE_URL);
+            $uri = explode('/', $uri);
         }
+        return $uri;
     }
 }
